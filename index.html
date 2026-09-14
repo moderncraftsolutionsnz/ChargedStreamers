@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charged Streamers — hand-tied jig heads</title>
+<meta name="description" content="Hand-tied streamer jig heads built from wool, knit yarn and fabric scraps instead of soft plastic — made by Charged Streamers in Aotearoa New Zealand.">
+<meta property="og:title" content="Charged Streamers">
+<meta property="og:description" content="Hand-tied streamer jig heads built from wool, knit yarn and fabric scraps instead of soft plastic. Zero plastic, built to last.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="Images/Herobackground.jpg">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2f3124;
+    --paper:#e3dfd5;
+    --paper-2:#d8d4c8;
+    --moss:#41573f;
+    --rust:#6b8763;
+    --rust-2:#4f6b49;
+    --line:#c9d0bd;
+    --charcoal:#1c2119;
+    --bone:#e3dfd5;
+    --banner:#3f5548;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Work Sans', sans-serif;
+    color:var(--charcoal);
+    background:var(--paper);
+    line-height:1.6;
+  }
+  h1,h2,h3{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    letter-spacing:0.01em;
+    line-height:1.05;
+    margin:0;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  @media(max-width:640px){.wrap{padding:0 20px;}}
+
+  /* topbar = announcement strip + header, merged into one visual band,
+     with the logo overlaid across the FULL combined depth (not just the
+     nav row) and vertically centered. */
+  .topbar{position:relative;background:var(--banner);}
+  .topbar-brand{
+    position:absolute; left:32px; top:0; bottom:0;
+    display:flex; align-items:center; z-index:5;
+  }
+
+  /* announcement bar */
+  .announce{background:var(--banner);color:var(--bone);text-align:center;font-size:13px;padding:9px 0;letter-spacing:0.02em;}
+
+  /* brand mark */
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+  .brand .badge{width:34px;height:34px;flex-shrink:0;}
+  .brand .word{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;
+    font-size:22px;
+    letter-spacing:0.02em;
+  }
+  .brand .word span{color:var(--rust);}
+  .logo-img{height:92px;width:auto;flex-shrink:0;display:block;}
+
+  /* header */
+  header{background:var(--banner);}
+  .topbar-brand, .topbar-brand .word{color:var(--bone);}
+  nav.wrap{display:flex;align-items:center;justify-content:flex-end;height:72px;flex-wrap:wrap;}
+  .navlinks{display:flex;gap:32px;list-style:none;margin:0;padding:0;}
+  .navlinks a{color:var(--bone);text-decoration:none;font-size:15px;opacity:0.85;}
+  .navlinks a:hover{opacity:1;}
+
+  /* mobile menu toggle - hidden on desktop, shown below 760px */
+  .nav-toggle{
+    display:none;background:none;border:none;cursor:pointer;
+    width:36px;height:36px;padding:0;
+    flex-direction:column;justify-content:center;align-items:center;gap:6px;
+  }
+  .nav-toggle span{display:block;width:22px;height:2px;background:var(--bone);transition:transform .2s,opacity .2s;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0;}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+
+  @media(max-width:760px){
+    /* the absolutely-positioned logo overlay only has room to overlay
+       cleanly at wider widths - below that, put it back in normal flow
+       stacked above the announce/nav rows so it can't collide with them */
+    .topbar-brand{position:static;justify-content:center;padding:14px 0 4px;}
+    .logo-img{height:56px;}
+    nav.wrap{justify-content:center;height:auto;padding:6px 0 14px;flex-wrap:wrap;}
+    .nav-toggle{display:flex;}
+    .navlinks{
+      display:none;flex-direction:column;gap:0;width:100%;
+      text-align:center;margin-top:10px;
+    }
+    .navlinks.open{display:flex;}
+    .navlinks a{display:block;padding:10px 0;font-size:15px;}
+  }
+
+
+  /* welcome / centered intro (was the hero copy) */
+  .welcome{background:var(--ink);color:var(--bone);padding:76px 0;text-align:center;min-height:88vh;display:flex;align-items:center;}
+  .welcome .eyebrow{color:var(--bone);font-size:15px;font-weight:500;margin-bottom:14px;opacity:0.8;}
+  .welcome h1{font-size:44px;max-width:18ch;margin:0 auto;color:var(--bone);}
+  @media(max-width:640px){.welcome h1{font-size:32px;}}
+  .welcome p{font-size:17px;color:#cdd6c9;max-width:52ch;margin:20px auto 0;}
+  .welcome .cta-row{display:flex;justify-content:center;gap:16px;margin-top:32px;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:13px 26px;font-size:15px;font-weight:500;
+    text-decoration:none;border-radius:2px;
+  }
+  .btn-primary{background:var(--rust);color:#fff;}
+  .btn-primary:hover{background:var(--rust-2);}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.35);color:var(--bone);}
+  .btn-ghost:hover{border-color:rgba(255,255,255,0.7);}
+
+  /* generic sections */
+  .section{padding:88px 0;}
+  .section-head{max-width:60ch;margin-bottom:48px;}
+  .section-head .eyebrow{color:var(--rust-2);font-size:15px;font-weight:500;margin-bottom:14px;}
+  .section-head h2{font-size:36px;color:var(--charcoal);}
+  .section-head p{font-size:16px;color:#4b5245;margin-top:12px;}
+
+  /* flies grid */
+  .flies{background:var(--paper);}
+  .flies-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:44px;}
+  @media(max-width:900px){.flies-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:600px){.flies-grid{grid-template-columns:1fr;}}
+
+  /* placeholder fly cards -- designs still coming */
+  .fly-photo-placeholder{
+    height:190px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;
+    border:1.5px dashed var(--line);background:#f4f1e6;
+  }
+  .fly-photo-placeholder svg{width:30px;height:30px;opacity:.45;color:var(--moss);}
+  .fly-photo-placeholder span{font-size:11px;color:#8a9484;letter-spacing:.02em;}
+  .fly-card .placeholder-text{color:#8a9484;font-style:italic;}
+  .fly-card{background:#fff;border:3px solid var(--charcoal);padding:22px;text-align:center;}
+  .fly-photo{overflow:hidden;background:#f4f1e6;}
+  .fly-photo img{
+    width:100%;height:auto;display:block;
+    animation:flySwim 4s ease-in-out infinite;
+    transform-origin:55% 50%;
+  }
+  @keyframes flySwim{
+    0%,100%{transform:rotate(-1deg) translateY(0);}
+    50%{transform:rotate(1deg) translateY(-3px);}
+  }
+  .fly-card h3{font-size:22px;color:var(--charcoal);margin-top:16px;}
+  .fly-card p{font-size:14px;color:#565c4c;margin-top:6px;}
+
+  /* origin section */
+  .origin{background:var(--paper);padding:80px 0;}
+  .origin .wrap{max-width:760px;}
+  .origin .eyebrow{color:var(--rust-2);font-size:15px;font-weight:500;margin-bottom:14px;}
+  .origin h2{font-size:34px;color:var(--charcoal);max-width:20ch;}
+  .origin p{font-size:16px;color:#40473a;margin-top:16px;}
+
+  /* impact / sustainability */
+  .impact{background:var(--moss);color:var(--bone);padding:80px 0;}
+  .impact .wrap{max-width:760px;}
+  .impact h2{font-size:34px;color:var(--bone);max-width:16ch;}
+  .impact p{font-size:16px;line-height:1.65;color:#dfe6d9;margin-top:18px;}
+  .impact blockquote{
+    margin:26px 0;padding:14px 20px;border-left:3px solid var(--rust);
+    font-size:15px;font-style:italic;color:#eef1e8;
+  }
+
+  /* process */
+  .process{background:var(--paper-2);}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0;
+    counter-reset:step;
+  }
+  @media(max-width:820px){.steps{grid-template-columns:1fr;}}
+  .step{
+    padding:0 24px 0 0;
+    border-right:1px solid var(--line);
+  }
+  .step:last-child{border-right:none;}
+  @media(max-width:820px){
+    .step{border-right:none;border-bottom:1px solid var(--line);padding:0 0 28px 0;margin-bottom:28px;}
+    .step:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+  }
+  .step-num{
+    counter-increment:step;
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:15px;
+    font-weight:600;
+    color:var(--rust-2);
+    margin-bottom:10px;
+  }
+  .step-num::before{content: counter(step, decimal-leading-zero) " — ";}
+  .step h3{font-size:19px;color:var(--charcoal);font-weight:500;font-family:'Work Sans',sans-serif;}
+  .step p{font-size:14px;color:#565c4c;margin-top:8px;}
+
+  /* footer */
+  footer{background:var(--ink);color:var(--bone);padding:56px 0 40px;}
+  .footer-top{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    flex-wrap:wrap;gap:24px;
+    padding-bottom:32px;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+  }
+  .footer-top p{color:#b9c2b3;font-size:15px;max-width:34ch;margin-top:10px;}
+  .footer-links{display:flex;gap:28px;list-style:none;padding:0;margin:0;}
+  .footer-links a{color:var(--bone);text-decoration:none;font-size:15px;opacity:0.85;}
+  .footer-links a:hover{opacity:1;}
+  .footer-bottom{font-size:13px;color:#8a9384;padding-top:24px;}
+
+  /* reveal-on-scroll animations */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible{opacity:1;transform:translateY(0);}
+  .flies-grid .reveal:nth-child(2){transition-delay:.12s;}
+  .steps .reveal:nth-child(1){transition-delay:0s;}
+  .steps .reveal:nth-child(2){transition-delay:.1s;}
+  .steps .reveal:nth-child(3){transition-delay:.2s;}
+  .steps .reveal:nth-child(4){transition-delay:.3s;}
+
+  /* ---- added: founders section + photo backgrounds ---- */
+
+  .welcome{
+    position:relative;
+    background:var(--ink) url("Images/INACTION.jpeg") center 30%/cover no-repeat;
+  }
+  .welcome-overlay{
+    position:absolute;top:0;right:0;bottom:0;left:0;z-index:1;
+    background:linear-gradient(180deg, rgba(21,37,34,0.55), rgba(21,37,34,0.35) 45%, rgba(21,37,34,0.60));
+  }
+  .welcome .wrap{position:relative;z-index:2;}
+
+  /* story photo */
+  .story-photo{max-width:100%;margin:36px auto 0;background:#fff;border:1px solid var(--line);padding:10px;}
+  .story-photo img{width:100%;height:auto;display:block;}
+  .story-photo-caption{
+    padding:14px 4px 4px;text-align:center;
+    font-family:'Barlow Condensed',sans-serif;font-size:17px;color:var(--charcoal);letter-spacing:.01em;
+  }
+  .story-photo-caption span{display:block;font-size:12px;color:var(--rust-2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;font-family:'Work Sans',sans-serif;font-weight:500;}
+
+  /* founders section */
+  .founders{
+    position:relative;padding:92px 0;color:var(--bone);
+    background:var(--ink);
+  }
+  .founders-overlay{position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(180deg, rgba(21,37,34,.92), rgba(21,37,34,.86) 55%, rgba(21,37,34,.95));}
+  /* the shared .section-head .eyebrow is styled green for the light
+     sections that reuse it (e.g. "Our flies") - too low-contrast on
+     this dark section, so override it here */
+  .founders .section-head .eyebrow{color:var(--bone);opacity:0.7;}
+  .founders .wrap{position:relative;z-index:1;}
+  .founders .section-head h2{color:var(--bone);}
+  .founders .section-head p{color:#cdd6c9;}
+  .founders-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:36px;margin-top:48px;}
+  @media(max-width:640px){.founders-grid{grid-template-columns:1fr;}}
+  .founder-card{
+    background:rgba(238,241,232,0.06);
+    border:1px solid rgba(238,241,232,0.16);
+    padding:32px 28px;text-align:center;
+  }
+  .founder-photo{
+    width:128px;height:128px;border-radius:50%;margin:0 auto 22px;
+    border:1.5px dashed rgba(238,241,232,0.45);
+    display:flex;align-items:center;justify-content:center;
+    background:rgba(238,241,232,0.05);
+    overflow:hidden;
+  }
+  .founder-photo.filled{border:1.5px solid rgba(238,241,232,0.45);}
+  .founder-photo.filled img{width:100%;height:100%;object-fit:cover;display:block;}
+  .founder-photo svg{width:34px;height:34px;opacity:.55;}
+  .founder-photo-label{display:block;font-size:11px;color:#b9c2b3;margin-top:6px;letter-spacing:.02em;}
+  .founder-card h3{font-size:24px;color:var(--bone);margin-bottom:12px;}
+  .founder-role{display:block;font-size:13px;color:var(--bone);opacity:0.75;text-transform:uppercase;letter-spacing:.06em;margin:-8px 0 14px;font-family:'Work Sans',sans-serif;font-weight:500;}
+  .founder-bio{
+    font-size:14.5px;line-height:1.7;color:#cdd6c9;text-align:left;
+  }
+
+  /* impact section photo background */
+  .impact{
+    position:relative;overflow:hidden;
+    background:var(--moss) url("Images/PLASTICSGONE.jpeg") center/cover no-repeat;
+  }
+  .impact-overlay{position:absolute;top:0;right:0;bottom:0;left:0;background:linear-gradient(180deg, rgba(65,87,63,.85), rgba(28,33,25,.90));}
+  .impact .wrap{position:relative;z-index:1;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a href="#top" class="brand topbar-brand">
+    <img class="logo-img" src="Logos/logo-transparent.png" alt="Charged Streamers logo">
+  </a>
+  <div class="announce">Hand-tied streamers &middot; Aotearoa New Zealand</div>
+  <header>
+    <nav class="wrap">
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="navlinks" id="navLinks">
+        <li><a href="#lures">The Flies</a></li>
+        <li><a href="#story">Story</a></li>
+        <li><a href="#founders">Founders</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<div id="top"></div>
+
+<section class="welcome">
+  <div class="welcome-overlay"></div>
+  <div class="wrap reveal">
+    <div class="eyebrow">Weighted jig heads, hand-dressed</div>
+    <h1>Streamers with some charge behind them</h1>
+    <p>Wool, knit yarns, and fabric scraps wound onto weighted jig heads — tied to move like something alive, not like everyone else's saddle hackle.</p>
+    <div class="cta-row">
+      <a href="#lures" class="btn btn-primary">See the flies</a>
+      <a href="#story" class="btn btn-ghost">Read the story</a>
+    </div>
+  </div>
+</section>
+
+<section class="section flies" id="lures">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Straight off the vise</div>
+      <h2>Our flies</h2>
+      <p>No illustrations here — these are actual ties, photographed in-hand.</p>
+    </div>
+    <div class="flies-grid">
+      <div class="fly-card reveal">
+        <div class="fly-photo">
+          <img src="Images/Flies/HORNYCOCK.jpeg" alt="Horny Cockatoo streamer jig, yellow and black grizzly hackle with a wound grey body">
+        </div>
+        <h3>Horny Cockatoo</h3>
+        <p>Grizzly hackle over a hand-wound grey body.</p>
+      </div>
+      <div class="fly-card reveal">
+        <div class="fly-photo">
+          <img src="Images/Flies/RAINBOWARR.jpeg" alt="Rainbow Warrior streamer jig, red synthetic fibre tail with a grey wound body and jig eyes">
+        </div>
+        <h3>Rainbow Warrior</h3>
+        <p>Red fibre tail on a weighted jig head.</p>
+      </div>
+      <div class="fly-card reveal">
+        <div class="fly-photo fly-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+            <circle cx="9" cy="10.5" r="2"/>
+            <path d="M3 16l4.5-4.5a1.5 1.5 0 0 1 2.12 0L15 17"/>
+            <path d="M14 15l1.5-1.5a1.5 1.5 0 0 1 2.12 0L21 17"/>
+          </svg>
+          <span>Photo coming soon</span>
+        </div>
+        <h3 class="placeholder-text">[ Fly name ]</h3>
+        <p class="placeholder-text">[ Materials and what makes this pattern swim. ]</p>
+      </div>
+      <div class="fly-card reveal">
+        <div class="fly-photo fly-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+            <circle cx="9" cy="10.5" r="2"/>
+            <path d="M3 16l4.5-4.5a1.5 1.5 0 0 1 2.12 0L15 17"/>
+            <path d="M14 15l1.5-1.5a1.5 1.5 0 0 1 2.12 0L21 17"/>
+          </svg>
+          <span>Photo coming soon</span>
+        </div>
+        <h3 class="placeholder-text">[ Fly name ]</h3>
+        <p class="placeholder-text">[ Materials and what makes this pattern swim. ]</p>
+      </div>
+      <div class="fly-card reveal">
+        <div class="fly-photo fly-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+            <circle cx="9" cy="10.5" r="2"/>
+            <path d="M3 16l4.5-4.5a1.5 1.5 0 0 1 2.12 0L15 17"/>
+            <path d="M14 15l1.5-1.5a1.5 1.5 0 0 1 2.12 0L21 17"/>
+          </svg>
+          <span>Photo coming soon</span>
+        </div>
+        <h3 class="placeholder-text">[ Fly name ]</h3>
+        <p class="placeholder-text">[ Materials and what makes this pattern swim. ]</p>
+      </div>
+      <div class="fly-card reveal">
+        <div class="fly-photo fly-photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="5" width="18" height="14" rx="1.5"/>
+            <circle cx="9" cy="10.5" r="2"/>
+            <path d="M3 16l4.5-4.5a1.5 1.5 0 0 1 2.12 0L15 17"/>
+            <path d="M14 15l1.5-1.5a1.5 1.5 0 0 1 2.12 0L21 17"/>
+          </svg>
+          <span>Photo coming soon</span>
+        </div>
+        <h3 class="placeholder-text">[ Fly name ]</h3>
+        <p class="placeholder-text">[ Materials and what makes this pattern swim. ]</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="origin" id="story">
+  <div class="wrap reveal">
+    <div class="eyebrow">The origin</div>
+    <h2>Where streamers meet spin rods</h2>
+    <p>Long before it was a business, it was just a soft-baiting habit — hours spent on New Zealand's rivers and lakes, going through packet after packet as plastic tails tore off on good fish or vanished on a snag. Around the same time, a university paper on mitigating environmental impact got me thinking there had to be a better way to get that same lifelike swimming action. That better way is built by hand from wool, knit yarn, and other sustainable materials instead of PVC, tied to hold up through fish after fish instead of needing to be replaced every session.</p>
+    <figure class="story-photo">
+      <img src="Images/Herobackground.jpg" alt="Close-up of a brown trout's flank and scales">
+    </figure>
+    <div class="story-photo-caption"><span>First cast, first take</span>The Rainbow Warrior &mdash; in action</div>
+  </div>
+</section>
+
+<section class="founders" id="founders">
+  <div class="founders-overlay"></div>
+  <div class="wrap reveal">
+    <div class="section-head">
+      <div class="eyebrow">Who's behind it</div>
+      <h2>Two anglers, one vise</h2>
+      <p>Charged Streamers is built by Seb and Dallas &mdash; an engineering student and an architecture student who'd rather be on the water than anywhere else.</p>
+    </div>
+    <div class="founders-grid">
+      <div class="founder-card">
+        <div class="founder-photo filled">
+          <img src="Images/SEBBIO.jpeg" alt="Seb holding a brown trout at the lake">
+        </div>
+        <h3 style="margin-top:16px;">Seb</h3>
+        <span class="founder-role">Co-founder</span>
+        <p class="founder-bio">I'm currently studying engineering, but I spent years fishing almost exclusively with soft plastics before the environmental cost of it started to bother me more than the convenience was worth. That's the itch Charged Streamers scratches for me &mdash; I tie the patterns and look after the sustainability side of the business, with a real stake in what New Zealand's rivers and lakes look like in twenty years.</p>
+      </div>
+      <div class="founder-card">
+        <div class="founder-photo filled">
+          <img src="Images/DALLASBIO.jpg" alt="Dallas holding a brown trout at the lake">
+        </div>
+        <h3 style="margin-top:16px;">Dallas</h3>
+        <span class="founder-role">Co-founder</span>
+        <p class="founder-bio">I'm studying architecture, but most of my headspace goes to fishing. I share Seb's love for what New Zealand's fisheries have to offer, and the same drive to see them looked after rather than taken for granted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="impact" id="why">
+  <div class="impact-overlay"></div>
+  <div class="wrap reveal">
+    <div class="eyebrow">Why it matters</div>
+    <h2>Fewer plastics in the river</h2>
+    <p>Soft plastic lures tear, bite off, and get lost on snags far more often than most anglers admit, and once they're gone, they don't just disappear. Research published in 2024 has already shown that these lures leach phthalates and dozens of other persistent chemicals into the water they're lost in, sometimes for weeks at a time. That's not to say you should panic every time you open a tackle box.</p>
+    <blockquote>The aim behind Charged Streamers isn't to cause hate against those (legends) who choose to soft bait. It's a reason to ask whether there's a better way to fish the same water.</blockquote>
+    <p>Phthalates are a well-studied class of endocrine disruptors — meaning they interfere with hormone systems rather than causing damage through simple toxicity alone. In fish, laboratory research has linked this kind of exposure to feminization of males, intersex conditions where testes develop egg cells, reduced fertility, altered sex ratios, and lower survival rates in developing embryos and larvae. Over several seasons, that can mean fewer fish reaching adulthood, even if the fish being caught still look completely healthy.</p>
+    <p>The 2024 lure study didn't stop at measuring chemical concentrations. Researchers tested whether leachate from the lures could trigger a hormonal response in living cells — and one extract did, behaving like a female hormone in testing. That's not proof of a direct line between lost soft plastics and a declining fish population in any specific river; that kind of field evidence takes years to establish. But it does place the chemicals leaching out of lost lures in the same category already known to affect how fish reproduce.</p>
+    <p>Freshwater fisheries in New Zealand depend on water quality and habitat that most anglers don't think twice about while they're casting. Every lure left in a river is a small, cumulative choice about what condition that water is in for the fish living in it, and for whoever's fishing it next season, and the season after that. Changing how we gear up now is a genuinely practical way to keep that water, and those fish, in the kind of shape worth coming back for.</p>
+    <p>This isn't about guilt-tripping anyone over a packet of soft plastics in the garage. It's about recognising that small changes in what we tie on the end of our line add up across an entire angling community, and that the water systems producing the best fishing conditions in the future are the ones we look after today.</p>
+  </div>
+</section>
+
+<section class="section process" id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Process</div>
+      <h2>How each one gets tied</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num"></div>
+        <h3>Weight &amp; hook</h3>
+        <p>Each head is poured and painted around a hand-selected hook, weighted for the way we want it to swim.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num"></div>
+        <h3>Thread base</h3>
+        <p>A tight thread base locks the anchor point before any material goes on.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num"></div>
+        <h3>Layer the tail</h3>
+        <p>Wool, knit scraps, and fabric are wound and layered in stages for a tapered profile.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num"></div>
+        <h3>Finish &amp; inspect</h3>
+        <p>Every jig gets whip-finished, checked for balance, and given a wiggle test before it ships.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#top" class="brand">
+          <img class="logo-img" src="Logos/logo-transparent.png" alt="Charged Streamers logo">
+        </a>
+        <p>Hand-tied in Aotearoa New Zealand. Small batch, low waste, built to move.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="mailto:hello@chargedstreamers.example">hello@chargedstreamers.example</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Facebook</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">© 2026 Charged Streamers</div>
+  </div>
+</footer>
+
+<script>
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach((el) => revealObserver.observe(el));
+
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
